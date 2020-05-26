@@ -1,0 +1,11 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<p>Logged in as {{request.user}}</p>
+<h1>videos</h1>
+{% for video in videos %}
+
+<div>
+    {{ video.title }} {{ video.user }} {{ video.date }}
+</div>
+
+{% endfor %} {% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>Test</h1>
+
+<form action='new_video' method='post'>
+{% csrf_token %}
+{{ form| crispy }}
+ <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+
+
+{% endblock %}
