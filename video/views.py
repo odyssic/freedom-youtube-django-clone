@@ -87,7 +87,7 @@ class NewVideo(View):
     def post(self, request):
         # pass filled out HTML-Form from View to NewVideoForm()
         form = NewVideoForm(request.POST, request.FILES)
-        print(title)
+        
         print(form)
         print(request.POST)
         print(request.FILES)
