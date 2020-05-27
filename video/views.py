@@ -4,14 +4,17 @@ from .forms import LoginForm, RegisterForm, NewVideoForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from .models import Video, Comment
+import string, random
+from django.core.files.storage import FileSystemStorage
+import os
 
 
 class HomeView(View):
     template_name = 'index.html'
 
     def get(self, request):
-        variableA = 'Title'
-        return render(request, 'core/index.html', {'menu_active_item': 'home'})
+        most_recent_videos = Video.objects.order_by('-datetime')[:8]
+        return render(request, 'core/index.html', {'most_recent_videos': most_recent_videos})
 
 class LoginView(View):
     template_name = 'login.html'
@@ -76,7 +79,6 @@ class NewVideo(View):
     template_name = 'new_video.html'
 
     def get(self, request):
-        print(request.user.is_authenticated)
         if request.user.is_authenticated == False:
             #return HttpResponse('You have to be logged in, in order to upload a video.')
             return HttpResponseRedirect('/register')
@@ -86,11 +88,10 @@ class NewVideo(View):
 
     def post(self, request):
         # pass filled out HTML-Form from View to NewVideoForm()
-        form = NewVideoForm(request.POST, request.FILES)
-        
-        print(form)
+        form = NewVideoForm(request.POST, request.FILES) 
+
         print(request.POST)
-        print(request.FILES)
+        print(request.FILES)      
 
         if form.is_valid():
             # create a new Video Entry
@@ -100,6 +101,14 @@ class NewVideo(View):
 
             random_char = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
             path = random_char+file.name
+
+            fs = FileSystemStorage(location = os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+            filename = fs.save(path, file)
+            file_url = fs.url(filename)
+
+            print(fs)
+            print(filename)
+            print(file_url)
 
             new_video = Video(title=title, 
                             description=description,
@@ -111,4 +120,3 @@ class NewVideo(View):
             return HttpResponseRedirect('/video/{}'.format(new_video.id))
         else:
             return HttpResponse('Your form is not valid. Go back and try again.')
-
