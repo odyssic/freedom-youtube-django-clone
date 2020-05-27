@@ -42,10 +42,23 @@
       </ul>
 
       <h1>Freedom Video Nework</h1>
-    </center>
+   
+
+{% if user.is_authenticated %}
+
+<p>Logged in as {{request.user}} | <a href = 'logout'>logout</a></p>
+
+{% else %}
+
+<p> You are not currently logged in </p>
+
+{% endif  %}
+
   </header>
 
   <body>
     {% block content %}{% endblock %}
   </body>
+
+   </center>
 </html>
