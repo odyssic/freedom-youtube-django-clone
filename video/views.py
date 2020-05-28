@@ -158,4 +158,4 @@ class NewVideo(View):
             # redirect to detail view template of a Video
             return HttpResponseRedirect('/video/{}'.format(new_video.id))
         else:
-            return HttpResponse('Your form is not valid. Go back and try again.')pipen
+            return HttpResponse('Your form is not valid. Go back and try again.')
