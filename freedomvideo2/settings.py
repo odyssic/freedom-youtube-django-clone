@@ -24,6 +24,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 INSTALLED_APPS = [
     'debug_toolbar',
     'crispy_forms',
+    'django_heroku',
     'video',
     'django.contrib.admin',
     'django.contrib.auth',
