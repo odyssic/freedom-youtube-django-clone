@@ -13,7 +13,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'z(v0dp5c%wlg^gs+c0&s%7p1zj#u*x&1qd#7xs^uzszkp3+s5h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -22,7 +22,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Application definition
 
 INSTALLED_APPS = [
-    'debug_toolbar',
     'crispy_forms',
     'django_heroku',
     'video',
@@ -35,7 +34,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -113,9 +111,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-INTERNAL_IPS = ['127.0.0.1', 'localhost']
+# INTERNAL_IPS = ['127.0.0.1', 'localhost']
 
 STATIC_URL = '/static/'
 
 import django_heroku
 django_heroku.settings(locals())
+
