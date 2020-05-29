@@ -26,8 +26,8 @@ class VideoView(View):
         video = Video.objects.get(pk=pk)
         comments = Comment.objects.order_by(-'datetime')
         video_path = slugify(video.path)
-        print('video_path' video_path)
-        print('video.path' video.path)
+        print('video_path', video_path)
+        print('video.path', video.path)
 
         if request.user.is_authenticated:
             form = CommentForm()
