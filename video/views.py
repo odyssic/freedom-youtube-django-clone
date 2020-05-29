@@ -8,6 +8,7 @@ import string, random
 from django.core.files.storage import FileSystemStorage
 import os
 from django.http import HttpResponseRedirect
+from slugify import slugify
 
 class HomeView(View):
     template_name = 'index.html'
@@ -18,15 +19,19 @@ class HomeView(View):
 
 class VideoView(View):
     template_name = 'video_detail.html'
+    
 
     def get(self, request, pk):
-
+        
         video = Video.objects.get(pk=pk)
-        comments = Comment.objects.all()
+        comments = Comment.objects.order_by(-'datetime')
+        video_path = slugify(video.path)
+        print('video_path' video_path)
+        print('video.path' video.path)
 
         if request.user.is_authenticated:
             form = CommentForm()
-            return render(request, 'core/video_detail.html', {'form': form, 'video': video, 'pk': pk, 'comments':comments})
+            return render(request, 'core/video_detail.html', {'form': form, 'video': video, 'video_path': video_path,'pk': pk, 'comments':comments})
             
         else:
             return render(request, 'core/video_detail.html', {'video': video, 'pk': pk})  
