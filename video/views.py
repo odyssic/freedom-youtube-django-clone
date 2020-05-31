@@ -24,7 +24,7 @@ class VideoView(View):
     def get(self, request, pk):
         
         video = Video.objects.get(pk=pk)
-        comments = Comment.objects.order_by(-'datetime')
+        comments = Comment.objects.order_by('-datetime')
         video_path = slugify(video.path)
         print('video_path', video_path)
         print('video.path', video.path)
