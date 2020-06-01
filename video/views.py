@@ -145,8 +145,9 @@ class NewVideo(View):
             description = form.cleaned_data['description']
             file = form.cleaned_data['file']
 
-            random_char = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
-            path = random_char+file.name
+            # random_char = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
+            # path = random_char+file.name
+            path = file.name
 
             fs = FileSystemStorage(location = os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
             filename = fs.save(path, file)
