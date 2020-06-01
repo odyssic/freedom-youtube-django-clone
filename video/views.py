@@ -25,13 +25,15 @@ class VideoView(View):
         
         video = Video.objects.get(pk=pk)
         comments = Comment.objects.order_by('-datetime')
-        video_path = slugify(video.path)
-        print('video_path', video_path)
+        path = video.path
+        src = path.replace(" ", "%")
+       
         print('video.path', video.path)
+        print('src', src)
 
         if request.user.is_authenticated:
             form = CommentForm()
-            return render(request, 'core/video_detail.html', {'form': form, 'video': video, 'video_path': video_path,'pk': pk, 'comments':comments})
+            return render(request, 'core/video_detail.html', {'form': form, 'video': video, 'src':src,'pk': pk, 'comments':comments})
             
         else:
             return render(request, 'core/video_detail.html', {'video': video, 'pk': pk})  

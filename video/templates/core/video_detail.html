@@ -6,8 +6,7 @@
 <center> 
 <h2>{{ video.title }}</h2>
 <video width="320" height="240" controls>
-  <source src={{ video_path }} type="video/mp4">
-  <source src="movie.ogg" type="video/ogg">
+  <source src="{{src}}" type="video">
 Your browser does not support the video tag.
 </video>
 <p>{{ video.description }}</p>
