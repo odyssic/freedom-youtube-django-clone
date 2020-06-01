@@ -38,6 +38,7 @@ class VideoView(View):
         video_by_id = Video.objects.get(id=id)
         BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         video_by_id.path = 'http://localhost:8000/get_video/'+video_by_id.path
+        # type in own URL for a database access
         context = {'video':video_by_id}
         
         if request.user.is_authenticated:
@@ -131,7 +132,7 @@ class NewVideo(View):
             return HttpResponseRedirect('/register')
         
         form = NewVideoForm()
-        return render(request, self.template_name, {'form':form})
+        return render(request, 'core/new_video.html', {'form':form})
 
     def post(self, request):
         # pass filled out HTML-Form from View to NewVideoForm()

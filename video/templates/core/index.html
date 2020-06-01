@@ -7,7 +7,7 @@
     <div class='video-container'>
         <div class='video'>
             {{ video.title }} {{ video.user }} {{ video.date }}
-            <a href={% url 'video' pk=video.pk %}>Watch Video</a>
+            <a href={% url 'video' id=video.id %}>Watch Video</a>
         </div>
 
         {% endfor %}

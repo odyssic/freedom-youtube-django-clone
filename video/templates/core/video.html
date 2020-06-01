@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% load crispy_forms_tags %} {% block title %} {% endblock %} {% block content %}
 <center>
     <h2>{{ video.title }}</h2>
-    <video controls autoplay src='{{ video.path}}'></video> <input type='file' accept='video/' /> <video width="320" height="240" controls>
+    <video controls autoplay src='{{ video.path}}'></video> <input type='file' accept='video/' /> <video width="320" height="240" max-width='100%' controls>
     <source src="{{video.path}}" type="video"> Your browser does not support the video tag.
     </video>
     <p>{{ video.description }}</p>
