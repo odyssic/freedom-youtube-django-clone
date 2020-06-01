@@ -1,16 +1,16 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
-<center> 
+<center>
 
-<h1>videos</h1>
-{% for video in most_recent_videos %}
+    <h1>videos</h1>
+    {% for video in most_recent_videos %}
 
-<div class='video-container'>
-    <div class='video'>
-    {{ video.title }} {{ video.user }} {{ video.date }}
-    <a href={% url 'video-detail' pk=video.pk %}>Watch Video</a>
+    <div class='video-container'>
+        <div class='video'>
+            {{ video.title }} {{ video.user }} {{ video.date }}
+            <a href={% url 'video' pk=video.pk %}>Watch Video</a>
+        </div>
+
+        {% endfor %}
     </div>
-
-    {% endfor %} 
-</div>
 </center>
 {% endblock %}
