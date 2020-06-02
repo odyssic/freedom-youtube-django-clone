@@ -2,6 +2,7 @@
 <center>
 
 
+
     <video controls autoplay src='{{ video.path}}'></video>
     </video>
     <h2>{{ video.title }}</h2>
@@ -9,7 +10,7 @@
 
     <h3> Comments </h3>
     <form action='/comment' class="form" method="post">
-        {% csrf_token %} {{ form }}
+        {% csrf_token %} {{ form | crispy }}
         <input type='hidden' name='video' value='{{video.pk}}'>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
