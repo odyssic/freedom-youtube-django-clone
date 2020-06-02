@@ -1,0 +1,27 @@
+.site_title {
+    font-family: "Archivo Black", sans-serif;
+}
+
+.form {
+    padding: 2rem;
+    margin: 2rem;
+}
+
+.comment-container {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.comment {
+    align-content: left;
+}
+
+.comment-body {
+    font-size: 70%;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.comment-date {
+    font-size: 50%;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}

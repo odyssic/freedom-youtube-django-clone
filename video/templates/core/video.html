@@ -1,21 +1,27 @@
 {% extends 'base.html' %} {% load static %} {% load crispy_forms_tags %} {% block title %} {% endblock %} {% block content %}
 <center>
-    <h2>{{ video.title }}</h2>
-    <video controls autoplay src='{{ video.path}}'></video> <input type='file' accept='video/' /> <video width="320" height="240" max-width='100%' controls>
-    <source src="{{video.path}}" type="video"> Your browser does not support the video tag.
+
+
+    <video controls autoplay src='{{ video.path}}'></video>
     </video>
-    <p>{{ video.description }}</p>
+    <h2>{{ video.title }}</h2>
+    <p> Description: {{ video.description }}</p>
 
     <h3> Comments </h3>
     <form action='/comment' class="form" method="post">
-        {% csrf_token %} {{ form|crispy }}
+        {% csrf_token %} {{ form }}
         <input type='hidden' name='video' value='{{video.pk}}'>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <div 'comment-container'>
         {% for comment in comments %}
         <div class='comment'>
-            <p>{{comment.text}}</p>
+            <p class='comment-body'>{{comment.text}}</p>
+            <p class='comment-date'>User: {{comment.user}} | Date and Time: {{comment.datetime}}</p>
+
+
+
+
         </div>
         {% empty %}
         <h4> There are no comments yet. </h4>

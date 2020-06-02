@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% load crispy_forms_tags %} {% block content %} {%load static %}
-<h1>Test</h1>
+<h2>Upload a Video</h2>
 
 <form class="form" action="new_video" method="post" enctype="multipart/form-data">
     {% csrf_token %} {{ form|crispy }}

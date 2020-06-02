@@ -11,7 +11,7 @@ urlpatterns = [
     path('video/<int:id>', VideoView.as_view(), name='video'),
     path('comment', CommentView.as_view()),
     path('get_video/<file_name>', VideoFileView.as_view()),
-    path('logout', LogoutView.as_view())
+    path('logout', LogoutView.as_view(), name='logout')
 ]
 
 from django.conf import settings
