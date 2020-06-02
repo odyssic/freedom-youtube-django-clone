@@ -3,9 +3,9 @@ from django.db import models
 # Create your models here.
 
 class Video(models.Model):
-    title = models.CharField(max_length=30)
-    description = models.TextField(max_length=300)
-    path = models.CharField(max_length=60)
+    title = models.CharField(max_length=100)
+    description = models.TextField(max_length=500)
+    path = models.CharField(max_length=100)
     datetime = models.DateTimeField(auto_now=True, blank=False, null=False) #todo: auto_now=True
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
 
