@@ -1,39 +1,22 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 <center>
 
-
-    <div class="jumbotron text-center">
-        <h1>My First Bootstrap Page</h1>
-        <p>Resize this responsive page to see the effect!</p>
-    </div>
-
     <div class="container">
+
         <div class="row">
+            {% for video in most_recent_videos %}
             <div class="col-sm-4">
-                <h3>Column 1</h3>
-                <p>Lorem ipsum dolor..</p>
+                <h3>{{ video.title |truncatewords:10 }}</h3>
+                <p> {{ video.user }} {{ video.date }}
+                    <a href={% url 'video' id=video.id %}>Watch Video</a></p>
+                THUMBNAIL
             </div>
-            <div class="col-sm-4">
-                <h3>Column 2</h3>
-                <p>Lorem ipsum dolor..</p>
-            </div>
-            <div class="col-sm-4">
-                <h3>Column 3</h3>
-                <p>Lorem ipsum dolor..</p>
-            </div>
+            {% endfor %}
         </div>
+
     </div>
 
-    <h1>videos</h1>
-    {% for video in most_recent_videos %}
 
-    <div class='video-container'>
-        <div class='video'>
-            {{ video.title }} {{ video.user }} {{ video.date }}
-            <a href={% url 'video' id=video.id %}>Watch Video</a>
-        </div>
-
-        {% endfor %}
     </div>
 </center>
 {% endblock %}
