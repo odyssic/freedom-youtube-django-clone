@@ -12,6 +12,8 @@ django-crispy-forms = "*"
 python-slugify = "*"
 bootstrap3 = "*"
 bootstrap-icons = "*"
+ffvideo = "*"
+sorl-thumbnail = "*"
 
 [requires]
 python_version = "3.8"

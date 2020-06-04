@@ -9,6 +9,9 @@ from django.core.files.storage import FileSystemStorage
 import os
 from wsgiref.util import FileWrapper
 
+
+
+
 class VideoFileView(View):
     
     def get(self, request, file_name):
@@ -23,6 +26,7 @@ class HomeView(View):
     template_name = 'index.html'
     def get(self, request):
         most_recent_videos = Video.objects.order_by('-datetime')[:8]
+        
         return render(request, 'core/index.html',{'menu_active_item': 'home', 'most_recent_videos': most_recent_videos})
 
 class LogoutView(View):

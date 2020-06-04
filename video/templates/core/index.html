@@ -9,7 +9,7 @@
                 <h3>{{ video.title |truncatewords:10 }}</h3>
                 <p> {{ video.user }} {{ video.date }}
                     <a href={% url 'video' id=video.id %}>Watch Video</a></p>
-                THUMBNAIL
+                THUMBNAIL {{thumbnail}}
             </div>
             {% endfor %}
         </div>
