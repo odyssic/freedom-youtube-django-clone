@@ -1,3 +1,43 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin-left: 0;
+    font-family: var(--defaultFont);
+    color: var(--defaultText);
+    text-align: center;
+}
+
+:root {
+    --link-color: #fff;
+    --link-hover: red;
+    --link-active: red;
+    --minilink: #fff;
+    --minilink-hover: red;
+    --card-text-color: #fff;
+    --text-color: #fff;
+    --box-shadow: rgba(0, 0, 0, 0.2);
+    --form-background: #fff;
+    --form-text: #484848;
+    --form-input-border: #e5e5e5;
+    --accent: red;
+    /* --hover: #ff5a5f; */
+    --border-color: rgb(153, 170, 223);
+    --button-hover: #ff5a5f;
+    --button-text-color: #fff;
+    --button-background: rgb(173, 55, 81);
+    --card-outline: rgb(138, 60, 60);
+    --dark-red: rgb(173, 55, 81);
+    --link-color: rgb(120, 149, 222);
+    --background-color: rgb(#fff);
+    --last-card: rgb(42, 59, 85);
+    /* Fonts  */
+    /* --defaultFont: "Helvetica", sans-serif; */
+    --navLinks: "Helvetica", cursive;
+    --default-text-color: rgb(153, 170, 223);
+    --default-blue: rgb(153, 170, 223);
+    --default-font-weight: font-weight: 400;
+}
+
 .site_title {
     font-family: "Archivo Black", sans-serif;
 }

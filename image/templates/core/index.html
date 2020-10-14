@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<center>
+
+    <div class="row">
+
+    </div>
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+            {% for image in most_recent_images %}
+            <div class="col-sm-4">
+                <h3>{{ image.title |truncatewords:10 }}</h3>
+                <p> {{ image.user }} {{ image.date }}
+                    <a href={% url 'image' id=image.id %}>View Image</a></p>
+                <p>{{ image.get_tiny_url }}</p>
+                THUMBNAIL {{thumbnail}}
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+    </div>
+</center>
+{% endblock %}

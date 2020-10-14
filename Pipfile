@@ -6,14 +6,10 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+django = "*"
 django-heroku = "*"
-gunicorn = "*"
 django-crispy-forms = "*"
-python-slugify = "*"
-bootstrap3 = "*"
-bootstrap-icons = "*"
-ffvideo = "*"
-sorl-thumbnail = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.8"
