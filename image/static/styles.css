@@ -2,9 +2,25 @@
     box-sizing: border-box;
     padding: 0;
     margin-left: 0;
-    font-family: var(--defaultFont);
+    font-family: var(--default-font-family);
     color: var(--defaultText);
-    text-align: center;
+}
+
+body {
+    padding: 4em;
+}
+
+.logo {
+    width: 200px;
+    align-content: center;
+    padding: 1rem;
+    flex-basis: 1;
+}
+
+.logo-container {
+    flex-flow: row;
+    align-content: center;
+    justify-content: center;
 }
 
 :root {
@@ -15,39 +31,36 @@
     --minilink-hover: red;
     --card-text-color: #fff;
     --text-color: #fff;
-    --box-shadow: rgba(0, 0, 0, 0.2);
-    --form-background: #fff;
-    --form-text: #484848;
-    --form-input-border: #e5e5e5;
-    --accent: red;
-    /* --hover: #ff5a5f; */
-    --border-color: rgb(153, 170, 223);
-    --button-hover: #ff5a5f;
-    --button-text-color: #fff;
-    --button-background: rgb(173, 55, 81);
-    --card-outline: rgb(138, 60, 60);
-    --dark-red: rgb(173, 55, 81);
-    --link-color: rgb(120, 149, 222);
-    --background-color: rgb(#fff);
-    --last-card: rgb(42, 59, 85);
     /* Fonts  */
     /* --defaultFont: "Helvetica", sans-serif; */
-    --navLinks: "Helvetica", cursive;
-    --default-text-color: rgb(153, 170, 223);
-    --default-blue: rgb(153, 170, 223);
+    --navLinks: "Helvetica", sans-serif;
     --default-font-weight: font-weight: 400;
+    --default-font-family: 'Archivo', sans-serif;
+}
+
+form {
+    padding: 2rem;
+    margin: 2rem;
+    align-items: left;
+}
+
+form input[type=text] {
+    text-align: left;
+}
+
+
+/* h1 {
+    color: red;
 }
 
 .site_title {
     font-family: "Archivo Black", sans-serif;
 }
+/* 
 
-.form {
-    padding: 2rem;
-    margin: 2rem;
-}
 
-.comment-container {
+
+/* .comment-container {
     display: flex;
     flex-flow: column nowrap;
 }
@@ -64,4 +77,4 @@
 .comment-date {
     font-size: 50%;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
+} */

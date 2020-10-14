@@ -9,6 +9,7 @@ from django.core.files.storage import FileSystemStorage
 import os
 from wsgiref.util import FileWrapper
 
+
 # ====================================home==============================
 
 # home page - shows a few recent videos  (8)
@@ -39,33 +40,37 @@ class NewImage(View):
 
     def post(self, request):
         # pass filled out HTML-Form from View to NewImageForm()
-        form = NewImageForm(request.POST, request.FILES)       
+        form = NewImageForm(request.POST, request.FILES)
+            
 
         if form.is_valid():
             # create a new image Entry
             title = form.cleaned_data['title']
-            file = form.cleaned_data['file']
+            image = form.cleaned_data['image']
 
             random_char = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
-            path = random_char+file.name
+            path = random_char+image.name
 
             fs = FileSystemStorage(location = os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-            filename = fs.save(path, file)
+            filename = fs.save(path, image)
             file_url = fs.url(filename)
 
             print(fs)
             print(filename)
             print(file_url)
 
-            new_image = Image(title=title, 
+            new_image = Image(title=title,
                             user=request.user,
-                            path=path)
+                            path=path,
+                            )
             new_image.save()
             
             # redirect to detail view template of an Image
             return HttpResponseRedirect('/image/{}'.format(new_image.id))
         else:
             return HttpResponse('Your form is not valid. Go back and try again.')
+
+        
 
 
 class ImageFileView(View):
@@ -106,32 +111,6 @@ class ImageView(View):
 
 # ====================================Registration==============================        
 
-class RegisterView(View):
-    template_name = 'register.html'
-    
-    def get(self, request):
-        if request.user.is_authenticated:
-            print('already logged in. Redirecting.')
-            print(request.user)
-            return HttpResponseRedirect('/')
-        form = RegisterForm()
-        return render(request, './core/register.html', {'form': form})
-
-    def post(self, request):
-        # pass filled out HTML-Form from View to RegisterForm()
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            # create a User account
-            print(form.cleaned_data['username'])
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            email = form.cleaned_data['email']
-            new_user = User(username=username, email=email)
-            new_user.set_password(password)
-            new_user.save()
-            return HttpResponseRedirect('/login')
-        return HttpResponse('This is Register view. POST Request.')
-
 
 class LoginView(View):
     template_name = 'login.html'
@@ -166,6 +145,32 @@ class LogoutView(View):
     def get(self, request):
         logout(request)
         return HttpResponseRedirect('/')
+
+class RegisterView(View):
+    template_name = 'register.html'
+    
+    def get(self, request):
+        if request.user.is_authenticated:
+            print('already logged in. Redirecting.')
+            print(request.user)
+            return HttpResponseRedirect('/')
+        form = RegisterForm()
+        return render(request, 'core/register.html', {'form': form})
+
+    def post(self, request):
+        # pass filled out HTML-Form from View to RegisterForm()
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            # create a User account
+            print(form.cleaned_data['username'])
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            email = form.cleaned_data['email']
+            new_user = User(username=username, email=email)
+            new_user.set_password(password)
+            new_user.save()
+            return HttpResponseRedirect('/login')
+        return HttpResponse('This is Register view. POST Request.')
 
 # ======================comments==========================
 

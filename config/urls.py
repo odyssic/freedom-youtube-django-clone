@@ -10,8 +10,9 @@ urlpatterns = [
     path('new_image', NewImage.as_view()),
     path('image/<int:id>', ImageView.as_view(), name='image'),
     path('comment', CommentView.as_view()),
-    path('get_image/<file_name>', ImageFileView.as_view()),
+    path('get_image/<file_name>', ImageFileView.as_view(), name="get_image"),
     path('logout', LogoutView.as_view(), name='logout')
+    
 ]
 
 from django.conf import settings

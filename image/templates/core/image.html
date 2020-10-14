@@ -3,13 +3,13 @@
 
 
 
-    <img src='{{ image.url }}'></img>
+    <img src=''></img>
     <h2>{{ image.title }}</h2>
 
     <h3> Comments </h3>
     <form action='/comment' class="form" method="post">
         {% csrf_token %} {{ form | crispy }}
-        <input type='hidden' name='video' value='{{video.pk}}'>
+        <input type='hidden' name='image' value='{{image.pk}}'>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <div 'comment-container'>
